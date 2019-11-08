@@ -1,0 +1,39 @@
+alias ga="git add"
+alias gaa="git add ."
+alias gc="git commit -am "
+alias gp="git push"
+alias gpl="git pull" 
+alias gs="git status"
+alias nah="git reset --hard; git clean -df;"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+# Misc
+alias yw="yarn watch"
+alias gw="gulp watch"
+alias nrw="npm run watch"
+alias nrp="npm run production"
+
+# Laravel
+alias pas="php artisan serve"
+alias a="php artisan"
+
+alias c="composer"
+alias cu="composer update"
+alias cr="composer require"
+alias ci="composer install"
+alias cda="composer dump-autoload -o"
+
+# List all files colorized in long format
+alias l="ls -laF"
+
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
+
+#Docker
+# Get images
+alias di="docker images"
+
+# Get process included stop container
+alias dpa="docker ps -a"
+alias dvl="docker volume list"
+alias dvc="docker volume create"

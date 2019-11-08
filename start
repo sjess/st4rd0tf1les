@@ -1,0 +1,43 @@
+#!/bin/bash
+#
+# bootstrap installs things.
+
+function bootstrapTerminal() {	
+	sudo -v #ask password beforehand
+	source ${DT_PATH}installscript
+}
+BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+LIME_YELLOW=$(tput setaf 190)
+POWDER_BLUE=$(tput setaf 153)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+BRIGHT=$(tput bold)
+NORMAL=$(tput sgr0)
+BLINK=$(tput blink)
+REVERSE=$(tput smso)
+UNDERLINE=$(tput smul)
+
+DT_PATH=~/.dotfiles/
+starttotaltime=$(date +%s)
+clear && clear
+PREVIOUS_PWD="${PWD}"
+source ${DT_PATH}novagraphix
+cat <<EOF
+ ${BRIGHT}Welcome to Windows Subsystem Linux or Ubuntu Bootstrap Script v0.1.0
+ Initializating script, please wait until program configured itself.
+ This may take a few minutes and you will be prompted for the password
+ to elevate the user's permission.
+EOF
+
+printf "${RED}\n This will reset your terminal. Are you sure you want to to this? (y/n) "
+read -p 'Answer: '  reply
+
+if [[ $reply =~ ^[Yy]$ ]]
+then
+   bootstrapTerminal
+fi

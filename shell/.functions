@@ -1,0 +1,73 @@
+# Commit all
+commit ()
+{
+  commitMessage="$1"
+
+  if [ "$commitMessage" = "" ]; then
+     commitMessage="fast commit & push"
+  fi
+
+  git pull && git add .
+  eval "git commit -a -m '${commitMessage}'"
+  git push
+}
+
+# Deploy to GCP
+gcpush()
+{
+    gcloud config set project $1 && gcloud builds submit --tag gcr.io/$1/$2 && gcloud beta run deploy $2 --image --platform managed gcr.io/$1/$2
+}
+
+# Create a new directory and enter it
+mkd()
+{
+   mkdir -p "$@" && cd "$@"
+}
+
+archive()
+{
+   zip -r "$1".zip -i "$1" ;
+}
+
+weather()
+{
+   city="$1"
+
+   if [ -z "$city" ]; then
+      city="Flensburg"
+   fi
+
+   eval "curl http://wttr.in/${city}"
+}
+
+#Docker
+dri() { docker rmi $(docker images -q); }
+
+dbu() {
+   docker run --rm -v $1:/var/lib/mysql -v /c/Users/s.jess/Google\ Drive/WSL\ Backup/:/backup alpine tar -cjf /backup/$1.tar.bz2 -C /var/lib/mysql ./
+}
+
+dbr() {
+   docker run --rm -v $1:/var/lib/mysql -v /c/Users/s.jess/Google\ Drive/WSL\ Backup/:/backup alpine sh -c "rm -rf /var/lib/mysql/* ; tar -C /var/lib/mysql/ -xjf /backup/$1.tar.bz2"
+}
+
+# dkmdb $1:containername $2:volumename $3:image $4:port
+dmdb() {
+   docker run --name $1 -v $2:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Ng41pixl -p $4:3306 -d $3
+}
+
+dmysql() {
+   docker run --name novagraphix-mysql57 -v mysql57-data:/var/lib/mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true -p 3306:3306 -d mysql:5.7
+}
+
+dapache() {
+   docker run --name novagraphix-apache --mount type=bind,source=/d/,target=/app -p 80:80 -d webdevops/php-apache:7.3
+}
+
+dvr() {
+   docker volume rm $1
+}
+
+dsr() {
+   docker stop $1 && docker rm $1
+}

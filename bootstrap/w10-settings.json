@@ -1,0 +1,40 @@
+﻿{
+    "programs":  [
+                     {
+                         "program":  "vscode",
+                         "name":  "VSCode",
+                         "installation":  true,
+                         "default":  true
+                     },
+                     {
+                         "program":  "hyperv",
+                         "name":  "Hyper-V",
+                         "installation":  true,
+                         "default":  true
+                     },
+                     {
+                         "program":  "wsl",
+                         "name":  "Windows Linux Subsystem (Ubuntu 18.04)",
+                         "installation":  true,
+                         "default":  true
+                     },
+                     {
+                         "program":  "vlc",
+                         "name":  "VLC Media Player",
+                         "installation":  true,
+                         "default":  true
+                     },
+                     {
+                         "program":  "discord",
+                         "name":  "Discord",
+                         "installation":  true,
+                         "default":  true
+                     },
+                     {
+                         "program":  "google-backup-and-sync",
+                         "name":  "Google Backup and Sync",
+                         "installation":  true,
+                         "default":  true
+                     }
+                 ]
+}
