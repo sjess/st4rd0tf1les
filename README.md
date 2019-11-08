@@ -31,7 +31,7 @@ Script installs ZSH, Composer, Node, NPM, YARN, PHP7.3, Python2 & PIP
 You can install them by cloning the repository as `.dotfiles` in your home directory and running the bootstrap script.
 
 ```batch
-https://gitlab.com/sjess/dotfiles.git .dotfiles
+https://github.com/sjess/st4rd0tf1les.git .dotfiles
 cd .dotfiles
 ./start
 ```
