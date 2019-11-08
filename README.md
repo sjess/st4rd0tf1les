@@ -1,4 +1,4 @@
-# Stephan's dotfiles test
+# Stephan's dotfiles
 
 ## First thing
 
