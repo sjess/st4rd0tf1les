@@ -43,17 +43,25 @@ weather()
 #Docker
 dri() { docker rmi $(docker images -q); }
 
-dbu() {
-   docker run --rm -v $1:/var/lib/mysql -v /c/Users/s.jess/Google\ Drive/WSL\ Backup/:/backup alpine tar -cjf /backup/$1.tar.bz2 -C /var/lib/mysql ./
-}
-
-dbr() {
-   docker run --rm -v $1:/var/lib/mysql -v /c/Users/s.jess/Google\ Drive/WSL\ Backup/:/backup alpine sh -c "rm -rf /var/lib/mysql/* ; tar -C /var/lib/mysql/ -xjf /backup/$1.tar.bz2"
-}
-
-# dkmdb $1:containername $2:volumename $3:image $4:port
+# Make Database
 dmdb() {
-   docker run --name $1 -v $2:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Ng41pixl -p $4:3306 -d $3
+   echo "Type name of container [novagraphix-mysql57]:"
+   read container
+   container=${container:-novagraphix-mysql57}
+
+   echo "Type name of volume [mysql57-data]:"
+   read volume
+   volume=${volume:-mysql57-data}
+
+   echo "Type name of mysql-image from docker [mysql:5.7]:"
+   read image
+   image=${image:-mysql:5.7}
+
+   echo "Type port [3306]:"
+   read port
+   port=${port:-3306}
+
+   docker run --name $container -v $volume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Ng41pixl -p $port:3306 -d $image
 }
 
 dmysql() {
@@ -64,10 +72,42 @@ dapache() {
    docker run --name novagraphix-apache --mount type=bind,source=/d/,target=/app -p 80:80 -d webdevops/php-apache:7.3
 }
 
+# Database Restore
+dbr() {
+   echo "First run? [yn]:"
+   read yn
+
+   case $yn in
+        [Yy]* ) dmdb; ;;
+        [Nn]* ) ;;
+        * ) echo "Please answer yes or no.";;
+    esac
+   
+    printf "Type name of volume [mysql57-data]:"; volume=$(getvolume);
+
+    docker run --rm -v $volume:/var/lib/mysql -v /d/google_drive/WSL\ Backup/:/backup alpine sh -c "rm -rf /var/lib/mysql/* ; tar -C /var/lib/mysql/ -xjf /backup/$volume.tar.bz2"
+}
+
+# Backup Database
+dbu() {
+   echo "List of Volumes"
+   dvl
+   echo "Type name of backup without extensions [myqsl57-data]:"
+   read backup
+   backup=${backup:-mysql57-data}
+   docker run --rm -v $backup:/var/lib/mysql -v /d/google_drive/WSL\ Backup/:/backup alpine tar -cjf /backup/$backup.tar.bz2 -C /var/lib/mysql ./
+}
+
 dvr() {
    docker volume rm $1
 }
 
 dsr() {
    docker stop $1 && docker rm $1
+}
+
+getvolume() {
+   read volume
+   volume=${volume:-mysql57-data}
+   echo $volume
 }
