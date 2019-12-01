@@ -6,7 +6,9 @@
 
 After a clean Win10 install, you can run `./install.ps1` with elevated Powershell rights.
 
-This installs common things on your pc.
+This installs common things on your pc, but you need to give scripts the rights to do so
+
+`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
 ### Common
 
