@@ -47,7 +47,7 @@ if (([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::
         Write-Output "`n [ DOING ] Setting light theme as default"
         Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 1
         Write-Output "`n [ DOING ] Show hidden files, Show protected OS files, Show file extensions"
-        Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions
+        Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowFileExtensions
         Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced HideFileExt "0"
         Write-Output "`n [ DOING ] Taskbar where window is open for multi-monitor"
         Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name MMTaskbarMode -Value 2
