@@ -8,7 +8,11 @@ After a clean Win10 install, you can run `./install.ps1` with elevated Powershel
 
 This installs common things on your pc, but you need to give scripts the rights to do so
 
-`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+```
+Set-ExecutionPolicy Unrestricted -Force -Scope Currentuser
+Set-ExecutionPolicy Unrestricted -Force -Scope Localmachine
+Set-ExecutionPolicy Unrestricted -Force -Scope Process
+```
 
 ### Common
 
