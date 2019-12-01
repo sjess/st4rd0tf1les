@@ -18,6 +18,8 @@ Open Powershell as Admin
 
 `curl.exe -L -o ubuntu-1804.appx https://aka.ms/wsl-ubuntu-1804`
 
+`Add-AppxPackage .\ubuntu-1804.appx`
+
 ## What is used
 
 * [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
