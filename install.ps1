@@ -206,7 +206,7 @@ if (([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::
         "winscp.install"
         "yarn"
         "googledrive"
-        "cmder"
+        "fluent-terminal"
     )
     ForEach ($Program in $Programs) {
         Write-Output "`n [ START ] $Program"
