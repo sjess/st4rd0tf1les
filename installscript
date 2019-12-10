@@ -181,7 +181,7 @@ endtotaltime=$(date +%s)
 printf "\n Total Execution Time ... %s seconds\n" "$((endtotaltime - starttotaltime))\n"
 
 # Change Shell
-sudo chsh -s $(which zsh)
+chsh -s $(which zsh)
 
 echo "${GREEN}++++++++++++++++++++++++++++++"
 echo '++++++++++++++++++++++++++++++'
