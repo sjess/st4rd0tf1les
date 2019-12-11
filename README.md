@@ -3,6 +3,7 @@
 ## First thing
 
 ### Windows 10 autoinstall Programs
+---
 
 After a clean Win10 install, you can run `./install.ps1` with elevated Powershell rights.
 
@@ -15,8 +16,11 @@ Set-ExecutionPolicy Unrestricted -Force -Scope Process
 ```
 
 ### Common
+---
 
 Build for WSL ... e.g. [WSL Installation](https://twasa.ml/post/wsl/)
+
+or WSL 2 [WSL 2 Installation](https://docs.microsoft.com/de-de/windows/wsl/wsl2-install)
 
 Open Powershell as Admin
 
@@ -26,7 +30,34 @@ Open Powershell as Admin
 
 `Add-AppxPackage .\ubuntu-1804.appx`
 
+#### Switching to WSL 2
+
+> WSL 2 is only available in Windows 10 builds 18917 or higher
+
+* To make sure you are using build 18917 or higher please join the [Windows Insider Program](https://insider.windows.com/en-us/) and select the 'Fast' ring or the 'Slow' ring.
+* You can check your Windows version by opening Command Prompt and running the `ver` command.
+* Enable the 'Virtual Machine Platform' optional component
+* Set a distro to be backed by WSL 2 using the command line
+* Verify what versions of WSL your distros are using
+
+To set a distro please run:
+
+`wsl --set-version <Distro> 2`
+
+Additionally, if you want to make WSL 2 your default architecture you can do so with this command:
+
+`wsl --set-default-version 2`
+
+This will make any new distro that you install be initialized as a WSL 2 distro.
+
+To verify what versions of WSL each distro is using use the following command (only available in Windows Build 18917 or higher):
+
+`wsl --list --verbose` or `wsl -l -v`
+
+The distro that you've chosen above should now display a '2' under the 'version' column. Now that you're finished feel free to start using your WSL 2 distro!
+
 ## What is used
+---
 
 * [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 * [powerlevel9k](https://github.com/Powerlevel9k/powerlevel9k)
@@ -35,8 +66,9 @@ Open Powershell as Admin
 Script installs ZSH, Composer, Node, NPM, YARN, PHP7.3, Python2 & PIP
 
 ## Installation
+---
 
-You can install them by cloning the repository as `.dotfiles` in your home directory and running the bootstrap script.
+You can install them by cloning the repository as `.dotfiles` in your home directory and running the bootstrap script. Choose between WSL or WSL 2.
 
 ```batch
 https://github.com/sjess/st4rd0tf1les.git .dotfiles
@@ -45,6 +77,7 @@ cd .dotfiles
 ```
 
 ## IMPORTANT
+---
 
 ### SUDO
 
@@ -63,16 +96,9 @@ and add following line to `/etc/sudoers`
 
 **Now you can sudo without password.**
 
-### CHMOD
-
-Sometimes you have to set the rights on `./dotfiles/bootstrap`. To do so just type:
-
-```batch
-cd ~/.dotfiles
-chmod 0755 bootstrap
-```
 
 ### MACKUP
+---
 
 #### Usage
 
@@ -112,9 +138,20 @@ Display the list of applications supported by Mackup.
 
 Get some help, obviously...
 
-## Hyper
+## Fluent Terminal
+---
 
-### Settings
+I personally use the [Fluent Terminal](https://github.com/felixse/FluentTerminal).
+
+Download the zip here e.g.: [FluentTerminal.Package_0.6.1.0_Test.zip](https://github.com/felixse/FluentTerminal/releases)
+
+* Unzip, Right-click on Install.ps1, and choose "Run with Powershell".
+* The installer script will walk you through the rest of the process.
+
+## Hyper
+---
+
+### Settings for WSL 1
 
 ```json
 // font family with optional fallbacks
