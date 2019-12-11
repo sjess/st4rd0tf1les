@@ -45,15 +45,13 @@ read -p 'Answer: '  reply
 
 if [[ $reply =~ ^[Yy]$ ]]
 then
-   bootstrapTerminal
-fi
+   	printf "${RED}\n WSL or WSL2? (1/2) "
+	read -p 'Answer: '  reply
 
-printf "${RED}\n WSL or WSL2? (1/2) "
-read -p 'Answer: '  reply
-
-if [[ $reply =~ ^[1]$ ]]
-then
-   bootstrapTerminal
-else
-   bootstrapTerminal2
+	if [[ $reply =~ ^[1]$ ]]
+	then
+	bootstrapTerminal
+	else
+	bootstrapTerminal2
+	fi
 fi
