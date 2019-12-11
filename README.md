@@ -164,3 +164,8 @@ shell: "C:\\Windows\\System32\\cmd.exe",
 // by default `['--login']` will be used
 shellArgs: ["--login", "-i", "/c wsl"],
 ```
+
+## Move WSL to another Drive
+---
+
+[Link StackOverflow](https://stackoverflow.com/questions/38779801/move-wsl-bash-on-windows-root-filesystem-to-another-hard-drive)
