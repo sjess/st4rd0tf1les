@@ -6,6 +6,12 @@ function bootstrapTerminal() {
 	sudo -v #ask password beforehand
 	source ${DT_PATH}installscript
 }
+
+function bootstrapTerminal2() {	
+	sudo -v #ask password beforehand
+	source ${DT_PATH}installscript_wsl2
+}
+
 BLACK=$(tput setaf 0)
 RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
@@ -40,4 +46,14 @@ read -p 'Answer: '  reply
 if [[ $reply =~ ^[Yy]$ ]]
 then
    bootstrapTerminal
+fi
+
+printf "${RED}\n WSL or WSL2? (1/2) "
+read -p 'Answer: '  reply
+
+if [[ $reply =~ ^[1]$ ]]
+then
+   bootstrapTerminal
+else
+   bootstrapTerminal2
 fi
