@@ -61,15 +61,15 @@ dmdb() {
    read port
    port=${port:-3306}
 
-   docker run --name $container -v $volume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Ng41pixl -p $port:3306 -d $image
+   docker run --restart always --name $container -v $volume:/var/lib/mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true -p $port:3306 -d $image
 }
 
 dmysql() {
-   docker run --name novagraphix-mysql57 -v mysql57-data:/var/lib/mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true -p 3306:3306 -d mysql:5.7
+   docker run --restart always --name novagraphix-mysql57 -v mysql57-data:/var/lib/mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true -p 3306:3306 -d mysql:5.7
 }
 
 dapache() {
-   docker run --name novagraphix-apache --mount type=bind,source=/d/,target=/app -p 80:80 -d webdevops/php-apache:7.3
+   docker run --restart always --name novagraphix-apache --mount type=bind,source=/d/,target=/app -p 80:80 -d webdevops/php-apache:7.3
 }
 
 # Database Restore
@@ -85,7 +85,7 @@ dbr() {
    
     printf "Type name of volume [mysql57-data]:"; volume=$(getvolume);
 
-    docker run --rm -v $volume:/var/lib/mysql -v /d/google_drive/WSL\ Backup/:/backup alpine sh -c "rm -rf /var/lib/mysql/* ; tar -C /var/lib/mysql/ -xjf /backup/$volume.tar.bz2"
+    docker run --rm -v $volume:/var/lib/mysql -v /c/users/s.jess/Google\ Drive/WSL\ Backup/:/backup alpine sh -c "rm -rf /var/lib/mysql/* ; tar -C /var/lib/mysql/ -xjf /backup/$volume.tar.bz2"
 }
 
 # Backup Database
@@ -95,7 +95,7 @@ dbu() {
    echo "Type name of backup without extensions [myqsl57-data]:"
    read backup
    backup=${backup:-mysql57-data}
-   docker run --rm -v $backup:/var/lib/mysql -v /d/google_drive/WSL\ Backup/:/backup alpine tar -cjf /backup/$backup.tar.bz2 -C /var/lib/mysql ./
+   docker run --rm -v $backup:/var/lib/mysql -v /c/users/s.jess/Google\ Drive/WSL\ Backup/:/backup alpine tar -cjf /backup/$backup.tar.bz2 -C /var/lib/mysql ./
 }
 
 dvr() {
@@ -110,4 +110,13 @@ getvolume() {
    read volume
    volume=${volume:-mysql57-data}
    echo $volume
+}
+
+ds() {
+   docker start $1
+}
+
+repo() {
+   cd ~/repositories
+   find ./ -maxdepth 4 -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git pull" \;
 }
