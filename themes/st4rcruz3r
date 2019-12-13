@@ -1,18 +1,3 @@
-export ZSH="/home/sjess/.oh-my-zsh"
-
-DISABLE_UPDATE_PROMPT=true
-DISABLE_AUTO_UPDATE=true
-ZSH_DISABLE_COMPFIX=true
-
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_MODE='nerdfont-complete'
-
-plugins=(git zsh-syntax-highlighting wd git-auto-fetch zsh-autosuggestions)
-
-source $ZSH/oh-my-zsh.sh
-
-DEFAULT_USER=$USER
-
 # Set POWERLEVEL9KGT background color, either 'light' or 'dark' (this should match the GNOME Terminal's theme).
 POWERLEVEL9KGT_BACKGROUND='dark'
 if [[ $POWERLEVEL9KGT_BACKGROUND != 'light' ]] && [[ $POWERLEVEL9KGT_BACKGROUND != 'dark' ]]
@@ -130,7 +115,7 @@ then
     # https://github.com/bhilburn/powerlevel9k/blob/next/segments/status/README.md
     POWERLEVEL9K_STATUS_CROSS=true
     POWERLEVEL9K_STATUS_OK_FOREGROUND=$POWERLEVEL9KGT_GREEN
-    POWERLEVEL9K_STATUS_ERROR_FOREGROUND=$POWERLEVEL9KGT_RED
+    POWERLEVEL9K_STATUS_ERROR_FOREGROUND=1
     POWERLEVEL9K_STATUS_OK_BACKGROUND=$POWERLEVEL9KGT_TERMINAL_BACKGROUND
     POWERLEVEL9K_STATUS_ERROR_BACKGROUND=$POWERLEVEL9KGT_TERMINAL_BACKGROUND
 
@@ -140,7 +125,7 @@ then
     POWERLEVEL9K_ROOT_INDICATOR_BACKGROUND=$POWERLEVEL9KGT_TERMINAL_BACKGROUND
 
     POWERLEVEL9K_TIME_FOREGROUND=$POWERLEVEL9KGT_TERMINAL_BACKGROUND
-    POWERLEVEL9K_TIME_BACKGROUND=230
+    POWERLEVEL9K_TIME_BACKGROUND=231
 
     # Set 'background_jobs' segment colors
     # https://github.com/bhilburn/powerlevel9k/blob/next/segments/background_jobs/README.md
@@ -150,23 +135,3 @@ then
     POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="▶ "
     POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
 fi
-
-# Load the shell dotfiles, and then some:
-# * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.dotfiles/shell/.{exports,aliases,functions}; do
-	[ -r "$file" ] && [ -f "$file" ] && source "$file"
-done
-unset file
-
-. $HOME/.dotfiles/shell/z.sh
-
-# Sudoless npm https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
-NPM_PACKAGES="~/.npm-packages"
-export PATH="$PATH:$NPM_PACKAGES/bin"
-# Unset manpath so we can inherit from /etc/manpath via the `manpath`
-# command
-unset MANPATH # delete if you already modified MANPATH elsewhere in your config
-# Preserve MANPATH if you already defined it somewhere in your config.
-# Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
-export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
-export DOCKER_HOST=tcp://localhost:2375
