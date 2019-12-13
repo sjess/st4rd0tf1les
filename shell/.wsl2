@@ -1,0 +1,35 @@
+export ZSH="$HOME/.oh-my-zsh"
+
+DISABLE_UPDATE_PROMPT=true
+DISABLE_AUTO_UPDATE=true
+ZSH_DISABLE_COMPFIX=true
+
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_MODE='nerdfont-complete'
+
+plugins=(git zsh-syntax-highlighting wd git-auto-fetch zsh-autosuggestions)
+
+source $ZSH/oh-my-zsh.sh
+
+source $HOME/.dotfiles/themes/st4rcruz3r
+
+# Load the shell dotfiles, and then some:
+# * ~/.extra can be used for other settings you don’t want to commit.
+for file in ~/.dotfiles/shell/.{exports,aliases,functions}; do
+	[ -r "$file" ] && [ -f "$file" ] && source "$file"
+done
+unset file
+
+. $HOME/.dotfiles/shell/z.sh
+
+# Sudoless npm https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
+NPM_PACKAGES="~/.npm-packages"
+export PATH="$PATH:$NPM_PACKAGES/bin"
+
+# Unset manpath so we can inherit from /etc/manpath via the `manpath`
+# command
+unset MANPATH # delete if you already modified MANPATH elsewhere in your config
+
+# Preserve MANPATH if you already defined it somewhere in your config.
+# Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"

@@ -92,7 +92,7 @@ pip install --upgrade mackup
 
 # Symlink zsh prefs
 rm ~/.zshrc
-ln -s ~/.dotfiles/shell/.zshrc_wsl2 ~/.zshrc
+ln -s ~/.dotfiles/shell/.wsl2 ~/.zshrc
 
 # Symlink yarn prefs
 rm ~/.yarnrc

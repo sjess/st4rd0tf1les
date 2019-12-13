@@ -3,7 +3,6 @@
 ## First thing
 
 ### Windows 10 autoinstall Programs
----
 
 After a clean Win10 install, you can run `./install.ps1` with elevated Powershell rights.
 
@@ -16,7 +15,6 @@ Set-ExecutionPolicy Unrestricted -Force -Scope Process
 ```
 
 ### Common
----
 
 Build for WSL ... e.g. [WSL Installation](https://twasa.ml/post/wsl/)
 
@@ -57,7 +55,6 @@ To verify what versions of WSL each distro is using use the following command (o
 The distro that you've chosen above should now display a '2' under the 'version' column. Now that you're finished feel free to start using your WSL 2 distro!
 
 ## What is used
----
 
 * [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 * [powerlevel9k](https://github.com/Powerlevel9k/powerlevel9k)
@@ -66,18 +63,16 @@ The distro that you've chosen above should now display a '2' under the 'version'
 Script installs ZSH, Composer, Node, NPM, YARN, PHP7.3, Python2 & PIP
 
 ## Installation
----
 
 You can install them by cloning the repository as `.dotfiles` in your home directory and running the bootstrap script. Choose between WSL or WSL 2.
 
 ```batch
-https://github.com/sjess/st4rd0tf1les.git .dotfiles
+git clone https://github.com/sjess/st4rd0tf1les.git .dotfiles
 cd .dotfiles
 ./start
 ```
 
-## IMPORTANT
----
+## Misc
 
 ### SUDO
 
@@ -98,7 +93,6 @@ and add following line to `/etc/sudoers`
 
 
 ### MACKUP
----
 
 #### Usage
 
@@ -139,7 +133,6 @@ Display the list of applications supported by Mackup.
 Get some help, obviously...
 
 ## Fluent Terminal
----
 
 I personally use the [Fluent Terminal](https://github.com/felixse/FluentTerminal).
 
@@ -148,8 +141,33 @@ Download the zip here e.g.: [FluentTerminal.Package_0.6.1.0_Test.zip](https://gi
 * Unzip, Right-click on Install.ps1, and choose "Run with Powershell".
 * The installer script will walk you through the rest of the process.
 
+## Microsoft Terminal
+
+Also a good choice: [Windows Terminal](https://github.com/microsoft/terminal/releases)
+
+To use WSL with WT put the following into the profile settings (watch the DISTRO and GUID)
+
+```json
+{
+    "acrylicOpacity": 0.7,
+    "closeOnExit": true,
+    "colorScheme": "Campbell",
+    "commandline": "wsl.exe -d <DISTRO>",
+    "cursorColor": "#FFFFFF",
+    "cursorShape": "bar",
+    "fontFace": "FiraCode Nerd Font Retina",
+    "fontSize": 14,
+    "guid": "<YOUR GUID>",
+    "historySize": 9001,
+    "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
+    "name": "Ubuntu",
+    "padding": "0, 10, 0, 10",
+    "snapOnInput": true,
+    "useAcrylic": true
+}
+```
+
 ## Hyper
----
 
 ### Settings for WSL 1
 

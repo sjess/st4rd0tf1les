@@ -104,7 +104,7 @@ sudo usermod -aG docker $USER
 
 # Symlink zsh prefs
 rm ~/.zshrc
-ln -s ~/.dotfiles/shell/.zshrc ~/.zshrc
+ln -s ~/.dotfiles/shell/.wsl1 ~/.zshrc
 
 # Symlink yarn prefs
 rm ~/.yarnrc
