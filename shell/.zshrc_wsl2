@@ -11,8 +11,6 @@ plugins=(git zsh-syntax-highlighting wd git-auto-fetch zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
-DEFAULT_USER=$USER
-
 source $HOME/.dotfiles/themes/st4rcruz3r
 
 # Load the shell dotfiles, and then some:
