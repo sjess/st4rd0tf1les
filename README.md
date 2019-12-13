@@ -58,7 +58,7 @@ The distro that you've chosen above should now display a '2' under the 'version'
 ## What is used
 
 * [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
-* [powerlevel9k](https://github.com/Powerlevel9k/powerlevel9k)
+* [powerlevel10k](https://github.com/romkatv/powerlevel10k)
 * [Mackup](https://github.com/lra/mackup)
 
 Script installs ZSH, Composer, Node, NPM, YARN, PHP7.3, Python2 & PIP

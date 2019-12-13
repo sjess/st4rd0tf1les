@@ -4,14 +4,14 @@ DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=true
 ZSH_DISABLE_COMPFIX=true
 
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE='nerdfont-complete'
 
 plugins=(git zsh-syntax-highlighting wd git-auto-fetch zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
-source $HOME/.dotfiles/themes/st4rcruz3r
+source $HOME/.dotfiles/themes/.st4rcruz3r.zsh
 
 # Load the shell dotfiles, and then some:
 # * ~/.extra can be used for other settings you don’t want to commit.
