@@ -1,8 +1,9 @@
-# Stephan's dotfiles
+![GitHub repo size](https://img.shields.io/github/repo-size/sjess/st4rd0tf1les?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/sjess/st4rd0tf1les?style=for-the-badge)
 
-## First thing
+#### st4rd0tf1les
 
-### Windows 10 autoinstall Programs
+# Windows 10
 
 After a clean Win10 install, you can run `./install.ps1` with elevated Powershell rights.
 
@@ -14,7 +15,7 @@ Set-ExecutionPolicy Unrestricted -Force -Scope Localmachine
 Set-ExecutionPolicy Unrestricted -Force -Scope Process
 ```
 
-### Common
+# WSL
 
 Build for WSL ... e.g. [WSL Installation](https://twasa.ml/post/wsl/)
 
@@ -171,6 +172,8 @@ To use WSL with WT put the following into the profile settings (watch the DISTRO
 
 ### Settings for WSL 1
 
+Crashes on closing Hyper ... sux
+
 ```json
 // font family with optional fallbacks
 fontFamily: 'FiraCode Nerd Font Retina, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
@@ -184,6 +187,29 @@ shellArgs: ["--login", "-i", "/c wsl"],
 ```
 
 ## Move WSL to another Drive
----
 
-[Link StackOverflow](https://stackoverflow.com/questions/38779801/move-wsl-bash-on-windows-root-filesystem-to-another-hard-drive)
+You can move the distribution to another drive using [lxRunOffline](https://github.com/DDoSolitary/LxRunOffline). Use an elevated Powershell for the following tasks.
+
+Set permissions to the target folder. First, I think you must set some permissions to the folder where the distribution will be moved. But first create the destination folder.
+
+```bash
+C:\> whoami
+test\**THENAME**
+
+C:\> icacls D:\wsl /grant "**THENAME**:(OI)(CI)(F)"
+```
+
+Move the distribution. Using lxrunoffline move.
+
+```bash
+C:\wsl> lxrunoffline move -n Ubuntu-18.04 -d d:\wsl\installed\Ubuntu-18.04
+```
+You may check the installation folder using
+```bash
+C:\wsl> lxrunoffline get-dir -n Ubuntu-18.04
+d:\wsl\installed\Ubuntu-18.04
+```
+
+Run the distribution. 
+
+[StackOverflow](https://stackoverflow.com/questions/38779801/move-wsl-bash-on-windows-root-filesystem-to-another-hard-drive)
