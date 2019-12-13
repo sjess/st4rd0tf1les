@@ -89,6 +89,7 @@ echo 'Install Mackup'
 echo '-----------------'
 pip install --upgrade mackup
 
+if [ "$wslnum" == "1"]
 # Install Docker
 echo 'Install Docker'
 echo '-----------------'
@@ -100,11 +101,15 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt-get update -y
 sudo apt-get install -y docker-ce
 sudo usermod -aG docker $USER
-
+fi
 
 # Symlink zsh prefs
 rm ~/.zshrc
+if [ "$wslnum" == "1"]
 ln -s ~/.dotfiles/shell/.wsl1 ~/.zshrc
+else
+ln -s ~/.dotfiles/shell/.wsl2 ~/.zshrc
+fi
 
 # Symlink yarn prefs
 rm ~/.yarnrc
