@@ -90,6 +90,7 @@ echo '-----------------'
 pip install --upgrade mackup
 
 if [ "$wslnum" == "1"]
+then
 # Install Docker
 echo 'Install Docker'
 echo '-----------------'
@@ -106,6 +107,7 @@ fi
 # Symlink zsh prefs
 rm ~/.zshrc
 if [ "$wslnum" == "1"]
+then
 ln -s ~/.dotfiles/shell/.wsl1 ~/.zshrc
 else
 ln -s ~/.dotfiles/shell/.wsl2 ~/.zshrc
