@@ -23,7 +23,9 @@ alias cr="composer require"
 alias ci="composer install"
 alias cda="composer dump-autoload -o"
 
-# List all files colorized in long format
+#Linux
+alias update="sudo apt update -y && sudo apt upgrade -y"
+alias explorer="explorer.exe ."
 alias l="ls -laF"
 
 # Enable aliases to be sudo’ed
