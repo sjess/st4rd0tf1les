@@ -152,6 +152,12 @@ sudo apt update
 sudo apt install yarn
 yarn --version
 
+echo 'Install Global NPM Packages'
+echo '----------------'
+sudo npm i @vue/cli
+sudo npm i @vue/cli-service-global
+sudo npm install -g eslint
+
 printf "\n Config personal things (Y/n): "
 read -r personalconfig
 if [ -z "${personalconfig}" ] || [ "${personalconfig}" == Y ] || [ "${personalconfig}" == y ]; then
