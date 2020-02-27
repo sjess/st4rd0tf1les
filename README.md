@@ -165,7 +165,7 @@ To use WSL with WT put the following into the profile settings (watch the DISTRO
     "padding": "0, 10, 0, 10",
     "snapOnInput": true,
     "useAcrylic": true,
-    "startingDirectory" : "%USERPROFILE%"
+    "startingDirectory" : "//wsl$/Ubuntu-18.04/home/sjess"
 }
 ```
 
