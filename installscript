@@ -18,6 +18,7 @@ apps=(
     unzip
     libssl-dev
     ca-certificates
+    ffmpeg
 )
 trap '' 2
 sudo apt -y install "${apps[@]}"
