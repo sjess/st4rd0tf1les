@@ -163,6 +163,7 @@ echo '----------------'
 sudo npm i @vue/cli
 sudo npm i @vue/cli-service-global
 sudo npm install -g eslint
+sudo npm install -g ffmpeg-progressbar-cli
 
 printf "\n Config personal things (Y/n): "
 read -r personalconfig
