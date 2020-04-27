@@ -120,3 +120,21 @@ repo() {
    cd ~/repositories
    find ./ -maxdepth 4 -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git pull" \;
 }
+
+archive-full() {
+   echo "Select source clip"
+
+   files=(*)
+
+   select filename in ${files}; do echo "You selected ${filename}"; break; done
+
+   mkdir -p _nova_archive
+
+   ffmpeg -i ${filename} -acodec copy -vcodec copy -f mov _nova_archive/xlarge.mov
+
+   ffmpeg -i ${filename} -preset slow -codec:a aac -b:a 128k -codec:v libx264 -pix_fmt yuv420p -b:v 6000k -minrate 6000k -maxrate 9000k -bufsize 9000k -vf scale=-2:1080 _nova_archive/xlarge.mp4
+
+   ffmpeg -i ${filename} -preset slow -codec:a aac -b:a 128k -codec:v libx264 -pix_fmt yuv420p -b:v 3500k -minrate 2500k -maxrate 3500k -bufsize 5000k -vf scale=-2:720 _nova_archive/medium.mp4
+
+   ffmpeg -i ${filename} -preset slow -codec:a aac -b:a 128k -codec:v libx264 -pix_fmt yuv420p -b:v 1000k -minrate 500k -maxrate 2000k -bufsize 2000k -vf scale=-2:480 _nova_archive/small.mp4
+}
