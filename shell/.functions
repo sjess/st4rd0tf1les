@@ -138,5 +138,5 @@ archive-full() {
 
    ffmpeg-bar -i ${filename} -preset slow -codec:a aac -b:a 128k -codec:v libx264 -pix_fmt yuv420p -b:v 1000k -minrate 500k -maxrate 2000k -bufsize 2000k -vf scale=-2:480 _nova_archive/small.mp4
    
-   ffmpeg-bar -i ${filename} -preset slow -codec:a aac -b:a 128k -codec:v libx264 -pix_fmt yuv420p -b:v 1000k -minrate 2000k -maxrate 3000k -bufsize 2000k -vf scale=-2:1080 ${filename}_small.mp4
+   ffmpeg-bar -i ${filename} -preset slow -codec:a aac -b:a 128k -codec:v libx264 -pix_fmt yuv420p -b:v 2000k -minrate 2000k -maxrate 3000k -bufsize 2000k -vf scale=-2:1080 ${filename%.*}_pictures.mp4
 }
