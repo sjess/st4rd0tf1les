@@ -25,11 +25,11 @@ Open Powershell as Admin
 
 `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux`
 
-`curl.exe -L -o ubuntu-1804.appx https://aka.ms/wsl-ubuntu-1804`
+`curl.exe -L -o ubuntu-2004.appx https://aka.ms/wsl-ubuntu-2004`
 
-`Add-AppxPackage .\ubuntu-1804.appx`
+`Add-AppxPackage .\ubuntu-2004.appx`
 
-#### Switching to WSL 2
+## Switching to WSL 2
 
 > WSL 2 is only available in Windows 10 builds 18917 or higher
 
@@ -133,15 +133,6 @@ Display the list of applications supported by Mackup.
 
 Get some help, obviously...
 
-## Fluent Terminal
-
-I personally use the [Fluent Terminal](https://github.com/felixse/FluentTerminal).
-
-Download the zip here e.g.: [FluentTerminal.Package_0.6.1.0_Test.zip](https://github.com/felixse/FluentTerminal/releases)
-
-* Unzip, Right-click on Install.ps1, and choose "Run with Powershell".
-* The installer script will walk you through the rest of the process.
-
 ## Microsoft Terminal
 
 Also a good choice: [Windows Terminal](https://github.com/microsoft/terminal/releases)
@@ -150,41 +141,26 @@ To use WSL with WT put the following into the profile settings (watch the DISTRO
 
 ```json
 {
-    "acrylicOpacity": 0.7,
+    "guid": "*** YOUR GUID ***",
+    "hidden": false,
+    "name": "Ubuntu-20.04",
+    "source": "Windows.Terminal.Wsl",
+	"acrylicOpacity": 0.7,
     "closeOnExit": true,
     "colorScheme": "Campbell",
-    "commandline": "wsl.exe -d <DISTRO>",
+    "commandline": "wsl.exe -d Ubuntu-20.04",
     "cursorColor": "#FFFFFF",
     "cursorShape": "bar",
-    "fontFace": "FiraCode Nerd Font Retina",
+    "fontFace": "FiraMono Nerd Font Mono",
     "fontSize": 14,
-    "guid": "<YOUR GUID>",
     "historySize": 9001,
     "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
     "name": "Ubuntu",
     "padding": "0, 10, 0, 10",
     "snapOnInput": true,
     "useAcrylic": true,
-    "startingDirectory" : "//wsl$/Ubuntu-18.04/home/sjess"
+    "startingDirectory" : "//wsl$/Ubuntu-20.04/home/sjess"
 }
-```
-
-## Hyper
-
-### Settings for WSL 1
-
-Crashes on closing Hyper ... sux
-
-```json
-// font family with optional fallbacks
-fontFamily: 'FiraCode Nerd Font Retina, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
-
-...
-
-shell: "C:\\Windows\\System32\\cmd.exe",
-// for setting shell arguments (i.e. for using interactive shellArgs: `['-i']`)
-// by default `['--login']` will be used
-shellArgs: ["--login", "-i", "/c wsl"],
 ```
 
 ## Move WSL to another Drive
