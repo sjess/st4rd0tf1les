@@ -69,7 +69,7 @@ dmysql() {
 }
 
 dapache() {
-   docker run --restart always --name novagraphix-apache --mount type=bind,source=/d/,target=/app -p 80:80 -d webdevops/php-apache:7.3
+   docker run --restart always --name novagraphix-apache --mount type=bind,source=/home/sjess/repositories,target=/app -p 80:80 -d webdevops/php-apache:7.3
 }
 
 # Database Restore
