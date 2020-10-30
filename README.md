@@ -92,47 +92,6 @@ and add following line to `/etc/sudoers`
 
 **Now you can sudo without password.**
 
-
-### MACKUP
-
-#### Usage
-
-EDIT config under `~/.mackup.cfg`. For own backups make a file `~/.mackup/my-files.cfg`
-
-Example:
-
-```editor-config
-[application]
-name = My personal synced files and dirs
-
-[configuration_files]
-.vscode-server/data
-.vscode-server/extensions
-.software
-.gitconfig
-.mackup
-```
-
-`mackup backup`
-
-Backup your application settings.
-
-`mackup restore`
-
-Restore your application settings on a newly installed workstation.
-
-`mackup uninstall`
-
-Copy back any synced config file to its original place.
-
-`mackup list`
-
-Display the list of applications supported by Mackup.
-
-`mackup -h`
-
-Get some help, obviously...
-
 ## Microsoft Terminal
 
 Also a good choice: [Windows Terminal](https://github.com/microsoft/terminal/releases)
@@ -175,6 +134,8 @@ test\**THENAME**
 
 C:\> icacls D:\wsl /grant "**THENAME**:(OI)(CI)(F)"
 ```
+
+[Read the Wiki for installing or moving a distro](https://github.com/DDoSolitary/LxRunOffline/wiki)
 
 Move the distribution. Using lxrunoffline move.
 
